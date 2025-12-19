@@ -2,7 +2,7 @@ package org.java.mikhail.tasks;
 
 public class Task3 {
 
-    String s = """
+    String s1 = """
             SELECT t1.*
             FROM Table1 t1
             LEFT JOIN Table2 t2
@@ -12,14 +12,8 @@ public class Task3 {
 
     /* LEFT JOIN ищет совпадения по ID и NAME
     * WHERE t2.ID IS NULL отсекает те строки, которые нашлись (оставляя только отсутствующие)
-    *  Повторы сохраняются, потому что мы не используем DISTINCT.
-    * */
-
-    /**
-     * Потому что LEFT JOIN ... WHERE IS NULL теряет повторы, если в Table2 есть меньше копий, чем в Table1.
-     * Но, этот подход будет неправильным, если в Table2 меньше копий, чем в Table1.
-     */
-
+    * Повторы сохраняются, потому что мы не используем DISTINCT.
+    */
 
     /**
      * Вернет строки из Table1, для которых НЕТ соответствия в Table2 по ID и NAME.
@@ -28,6 +22,13 @@ public class Task3 {
      * 1 | Name1
      * 4 | Name3
      */
+
+    String s2 = """
+            SELECT DISTINCT t1.*
+            FROM Table1 t1
+            INNER JOIN Table2 t2
+            ON t1.ID = t2.ID AND t1.NAME = t2.NAME;
+            """;
 
     /**
      * JOIN — найдёт все совпадающие строки между Table1 и Table2 по ID и NAME
