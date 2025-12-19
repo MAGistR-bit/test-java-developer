@@ -37,7 +37,9 @@ class OrderService {
     }
 
     /**
-     * Возвращает map вида [валюта (в порядке возрастания разницы) – разница между самым большим и маленьким заказом типа DELIVERY].
+     * Вычисляет разницу между самым большим и маленьким заказом типа DELIVERY.
+     * @param orderDataList список заказов
+     * @return возвращает map вида [валюта (в порядке возрастания разницы) – разница между самым большим и маленьким заказом типа DELIVERY].
      */
     Map<String, Double> getMaxMinusMinDeliveryMapByCurrency(List<OrderData> orderDataList) {
         // Currency
