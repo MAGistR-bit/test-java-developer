@@ -1,8 +1,11 @@
 package org.java.mikhail.tasks;
 
 import java.util.*;
-import java.util.stream.*;
 
+/**
+ * @author Mikhail
+ * <p>Решение задачи №2.</p>
+ */
 public class Task2 {
 
     public static void main(String[] args) {
@@ -23,34 +26,14 @@ public class Task2 {
     }
 }
 
+/**
+ * Сервис, который содержит заказы пользователя.
+ */
 class OrderService {
 
     enum Type {DELIVERY, PICKUP}
 
-    static class OrderData {
-        final Type type;
-        final String currency;
-        final Long amount;
-
-        OrderData(Type type,
-                   String currency,
-                   Long amount) {
-            this.type = type;
-            this.currency = currency;
-            this.amount = amount;
-        }
-
-        String getCurrency() {
-            return currency;
-        }
-
-        Long getAmount() {
-            return amount;
-        }
-
-        Type getType() {
-            return type;
-        }
+    record OrderData(Type type, String currency, Long amount) {
     }
 
     /**
@@ -61,10 +44,10 @@ class OrderService {
         Map<String, long[]> currencyToMinMax = new HashMap<>();
 
         for (OrderData order : orderDataList) {
-            if (order.getType() != Type.DELIVERY) continue;
+            if (order.type() != Type.DELIVERY) continue;
 
-            String currency = order.getCurrency();
-            long amount = order.getAmount();
+            String currency = order.currency();
+            long amount = order.amount();
 
             currencyToMinMax.compute(currency, (k, v) -> {
                 if (v == null) {
@@ -79,7 +62,7 @@ class OrderService {
         // Переводим в Map<String, Double> и сортируем по разнице, сохранить порядок после сортировки
         return currencyToMinMax.entrySet()
                 .stream()
-                .sorted(Comparator.comparingDouble(e -> (e.getValue()[1] - e.getValue()[0]))) // sort by (max - min)
+                .sorted(Comparator.comparingLong(e -> (e.getValue()[1] - e.getValue()[0]))) // sort by (max - min)
                 .collect(LinkedHashMap::new,
                         (map, e) -> map.put(e.getKey(), (double) (e.getValue()[1] - e.getValue()[0])),
                         LinkedHashMap::putAll);
