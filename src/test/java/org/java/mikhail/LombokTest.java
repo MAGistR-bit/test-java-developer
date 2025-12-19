@@ -14,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class Task1 {
+public class LombokTest {
 
     private final LombokMapper lombokMapper = Mappers.getMapper(LombokMapper.class);
 
