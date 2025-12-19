@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class MyTest {
+public class Task1 {
 
     public static void main(String[] args) {
-        double[] array = {2,1,4,-2,3};
-        double[] result = MyTest.task(array);
-
+        double[] array = {2,1,4,2,3};
+        double[] result = Task1.task(array);
 
         System.out.println(Arrays.toString(result));
     }
