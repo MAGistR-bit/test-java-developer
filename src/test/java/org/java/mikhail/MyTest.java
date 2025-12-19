@@ -1,5 +1,9 @@
 package org.java.mikhail;
 
+import org.java.mikhail.lombok.LombokDestination;
+import org.java.mikhail.lombok.LombokMapper;
+import org.java.mikhail.lombok.SimpleDestination;
+import org.java.mikhail.lombok.SimpleSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package org.java.mikhail;
+package org.java.mikhail.lombok;
 
 import lombok.Builder;
 import lombok.Getter;
